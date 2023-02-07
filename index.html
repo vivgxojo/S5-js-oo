@@ -3,10 +3,12 @@
   <head>
     <meta charset="UTF-8">
     <title>Panier de fruits</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
   </head>
   <body>
     <h1>Commander un panier de fruits</h1>
-    <form name="commande">
+    <form name="commande" action="merci.html" method="get">
       <table>
         <caption>Votre panier</caption>
         <thead>
@@ -21,19 +23,20 @@
           <tr id="Peches">
             <td>Sac(s) de pêches</td>
             <td id="prixPeches" class="prix">10</td>
-            <td><input id="nbPeches"></td>
-            <td class="totalFruit">0</td>
+            <td><input id="nbPeches" name="nbPeches" onchange="valider('Peches')"></td>
+            <td id="sousTotalPeches" class="totalFruit">0</td>
+            <td id="erreurPeches"></td>
           </tr>
           <tr id="Poires">
             <td>Sac(s) de poires</td>
             <td id="prixPoires" class="prix">12</td>
-            <td><input id="nbPoires"></td>
+            <td><input id="nbPoires" name="nbPoires"></td>
             <td class="totalFruit">0</td>
           </tr>
           <tr id="Pommes">
             <td>Sac(s) de pommes</td>
             <td id="prixPommes" class="prix">11</td>
-            <td><input id="nbPommes"></td>
+            <td><input id="nbPommes" name="nbPommes"></td>
             <td class="totalFruit">0</td>
           </tr>
         </tbody>
@@ -49,7 +52,7 @@
         <input id="conditions" type="checkbox" required>
         <label for="conditions">J'ai lu et j'accepte les conditions de vente.</label>
         <div class="boutons">
-          <input id="submit" type="submit" disabled>
+          <input id="submit" type="submit" onclick="return envoyer()">
           <input id="reset" type="reset">
         </div>
       </div>
