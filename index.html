@@ -6,9 +6,9 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
-  <body>
+  <body onload="initialiser()">
     <h1>Commander un panier de fruits</h1>
-    <form name="commande" action="merci.html" method="get">
+    <form name="commande" action="merci.html"> <!-- method="get" -->
       <table>
         <caption>Votre panier</caption>
         <thead>
@@ -25,19 +25,21 @@
             <td id="prixPeches" class="prix">10</td>
             <td><input id="nbPeches" name="nbPeches" onchange="valider('Peches')"></td>
             <td id="sousTotalPeches" class="totalFruit">0</td>
-            <td id="erreurPeches"></td>
+            <td id="erreurPeches" class="errorFruit invisible"></td>
           </tr>
           <tr id="Poires">
             <td>Sac(s) de poires</td>
             <td id="prixPoires" class="prix">12</td>
-            <td><input id="nbPoires" name="nbPoires"></td>
-            <td class="totalFruit">0</td>
+            <td><input id="nbPoires" name="nbPoires" onchange="valider('Poires')"></td>
+            <td id="sousTotalPoires" class="totalFruit">0</td>
+            <td id="erreurPoires" class="errorFruit invisible"></td>
           </tr>
           <tr id="Pommes">
             <td>Sac(s) de pommes</td>
             <td id="prixPommes" class="prix">11</td>
-            <td><input id="nbPommes" name="nbPommes"></td>
-            <td class="totalFruit">0</td>
+            <td><input id="nbPommes" name="nbPommes" onchange="valider('Pommes')"></td>
+            <td id="sousTotalPommes" class="totalFruit">0</td>
+            <td id="erreurPommes" class="errorFruit invisible"></td>
           </tr>
         </tbody>
         <tfoot>
@@ -47,12 +49,12 @@
           </tr>
         </tfoot>
       </table>
-      <p class="error invisible center">La valeur minimale des paniers est de 20$.</p>
+      <p id="erreurPanier" class="error invisible center">La valeur minimale des paniers est de 20$.</p>
       <div class="center">
         <input id="conditions" type="checkbox" required>
         <label for="conditions">J'ai lu et j'accepte les conditions de vente.</label>
         <div class="boutons">
-          <input id="submit" type="submit" onclick="return envoyer()">
+          <input id="submit" type="submit" onclick="return envoyer()" disabled>
           <input id="reset" type="reset">
         </div>
       </div>

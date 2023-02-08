@@ -53,3 +53,12 @@ tfoot * {
 #total {
 	vertical-align: middle;
 }
+
+.invisible{
+	display: none;
+}
+
+.errorFruit{
+	background-color : rgba(139,0,0,0.1);
+	color : darkred;
+}
