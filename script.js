@@ -1,35 +1,16 @@
-class Fruit{
-    constructor(nom="", prix=0, quantite=0, sousTotal=0) {
-        this.nom = nom;
-        this.prix = prix;
-        this.quantite = quantite;
-        this.sousTotal = sousTotal;
-    }
-
-    toString(){
-        return this.quantite + " " + this.nom + " à " + this.prix + " : " + this.sousTotal;
-    }
-}
-
-class Panier{
-    constructor(peches, poires, pommes, total=0) {
-        this.peches = peches;
-        this.poires = poires;
-        this.pommes = pommes;
-        this.total = total;
-    }
-
-    toString(){
-        return this.peches + "<br>" + this.poires + "<br>" + this.pommes + "<br>Total : " + this.total;
-    }
-}
-
+/**
+ * Initialiser un objet panier vide qui sera utilisé sur la page.
+ */
 function initialiser(){
     // J'initialise le panier avec des fruits par défaut pour mettre toutes les valeurs à 0
     // Ça va me servir dans le calcul du total.
     panier = new Panier(new Fruit(), new Fruit(), new Fruit());  // Seul le panier va être global. On l'initialise au chargement de la page.
 }
 
+/**
+ * Valider un fruit, calculer le sous-total et ajouter le fruit dans le panier puis mettre à jour le total.
+ * @param fruit Nom du fruit à ajouter
+ */
 function valider(fruit){
     // Récupérer les variables
     let nbFruit = +document.getElementById("nb"+fruit).value;
@@ -69,9 +50,13 @@ function valider(fruit){
     document.getElementById("total").innerText = panier.total;
 }
 
+/**
+ * Valide le panier et envoie le formulaire, dans cette version les données sont envoyées par l'URL (seulement les quantités)
+ * @returns {boolean} retourne false si le panier n'est pas valide pour empêcher l'envoi.
+ */
 function envoyer(){
 
-    // Validation
+    // Validation du panier
     if (+panier.total < 20){
         document.getElementById("erreurPanier").classList.remove("invisible");
         document.getElementById("erreurPanier").innerText = "La valeur minimale des paniers est de 20$.";
@@ -85,13 +70,18 @@ function envoyer(){
     else {
         document.getElementById("erreurPanier").classList.add("invisible");
 
-        //inscririre les données dans la session
+/*      // Autres versions
+        // Inscririre les données dans la session
         //sessionStorage.setItem("nbPommes", document.getElementById("nbPommes").value);
+
         // Créer le panier
         //let monPanier = new Panier(nouveauFruit, 0, 0, nouveauFruit.sousTotal);
 
         // Inscrire le panier dans la session pour y avoir accès sur la deuxième page.
-        sessionStorage.setItem("panier", panier);
+        // sessionStorage.setItem("panier", panier);
+
+ */
+
         return true;
     }
 }
