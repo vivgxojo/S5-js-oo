@@ -8,6 +8,6 @@ class Panier{
     }
 
     toString(){
-        return this.peches + "<br>" + this.poires + "<br>" + this.pommes + "<br>Total : " + this.total;
+        return this.peches + "<br>" + this.poires + "<br>" + this.pommes + "<br>Total : " + this.total + "$";
     }
 }

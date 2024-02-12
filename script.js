@@ -1,11 +1,6 @@
-/**
- * Initialiser un objet panier vide qui sera utilisé sur la page.
- */
-function initialiser(){
-    // J'initialise le panier avec des fruits par défaut pour mettre toutes les valeurs à 0
-    // Ça va me servir dans le calcul du total.
-    panier = new Panier(new Fruit(), new Fruit(), new Fruit());  // Seul le panier va être global. On l'initialise au chargement de la page.
-}
+// J'initialise le panier avec des fruits par défaut pour mettre toutes les valeurs à 0
+// Ça va me servir dans le calcul du total.
+panier = new Panier(new Fruit(), new Fruit(), new Fruit());  // Seul le panier va être global. On l'initialise au chargement de la page.
 
 /**
  * Valider un fruit, calculer le sous-total et ajouter le fruit dans le panier puis mettre à jour le total.
@@ -31,23 +26,23 @@ function valider(fruit){
         sousTotal = +nbFruit * +prix;
         document.getElementById("sousTotal"+fruit).innerText = sousTotal;
         document.getElementById("submit").removeAttribute("disabled");
-    }
 
-    // Créer les objets fruits et les mettre dans le panier
-    let nouveauFruit = new Fruit(fruit, prix, nbFruit, sousTotal);
-    if (fruit === "Peches"){
-        panier.peches = nouveauFruit;
-    }
-    else  if(fruit === "Poires"){
-        panier.poires = nouveauFruit;
-    }
-    else {
-        panier.pommes = nouveauFruit
-    }
+        // Créer les objets fruits et les mettre dans le panier
+        let nouveauFruit = new Fruit(fruit, prix, nbFruit);
+        if (fruit === "Peches"){
+            panier.peches = nouveauFruit;
+        }
+        else  if(fruit === "Poires"){
+            panier.poires = nouveauFruit;
+        }
+        else {
+            panier.pommes = nouveauFruit
+        }
 
-    // Calculer le total
-    panier.total = +panier.peches.sousTotal + +panier.poires.sousTotal + +panier.pommes.sousTotal;
-    document.getElementById("total").innerText = panier.total;
+        // Calculer le total
+        panier.total = +panier.peches.sousTotal + +panier.poires.sousTotal + +panier.pommes.sousTotal;
+        document.getElementById("total").innerText = panier.total;
+    }
 }
 
 /**

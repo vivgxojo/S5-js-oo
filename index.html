@@ -5,12 +5,12 @@
     <title>Panier de fruits</title>
     <link rel="stylesheet" href="style.css">
     <script src="Fruit.js"></script>
-    <script src="script.js"></script>
     <script src="Panier.js"></script>
+    <script src="script.js" defer></script>
   </head>
-  <body onload="initialiser()">
+  <body>
     <h1>Commander un panier de fruits</h1>
-    <form name="commande" action="merci.html"> <!-- method="get" -->
+    <form name="commande" action="merci.html" onsubmit="return envoyer()"> <!-- method="get" -->
       <table>
         <caption>Votre panier</caption>
         <thead>
@@ -56,7 +56,7 @@
         <input id="conditions" type="checkbox" required>
         <label for="conditions">J'ai lu et j'accepte les conditions de vente.</label>
         <div class="boutons">
-          <input id="submit" type="submit" onclick="return envoyer()" disabled>
+          <input id="submit" type="submit" disabled>
           <input id="reset" type="reset">
         </div>
       </div>
